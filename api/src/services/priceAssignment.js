@@ -10,6 +10,13 @@ class PriceAssignment{
     static get Prices(){
         return _prices;
     }
+
+    static GetPriceByPhrase(p){
+        if(this.Prices[`${p}`]){
+            return this.Prices[`${p}`];
+        }
+        throw new Error(`Phrase - ${p} does not exist`);
+    }
 }
 
 export default PriceAssignment;

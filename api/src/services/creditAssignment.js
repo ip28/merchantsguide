@@ -11,7 +11,7 @@ class CreditAssignment{
             const priceSymbols = [];
             const pricePhrases = commodity_price;
             for(let p of pricePhrases){
-                priceSymbols.push(PriceAssignment.Prices[p]);
+                priceSymbols.push(PriceAssignment.GetPriceByPhrase(p));
             }
             const totalQuantity = calc.Calculate(priceSymbols);
             const creditPerQuantity = credits/totalQuantity;
@@ -21,6 +21,13 @@ class CreditAssignment{
 
     static get Credits(){
         return _credits;
+    }
+
+    static GetCreditByCommodity(commodity){
+        if(this.Credits[`${commodity}`]){
+            return this.Credits[`${commodity}`];
+        }
+        throw new Error(`Commodity - ${commodity} does not exist`);
     }
 }
 

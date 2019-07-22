@@ -12,7 +12,7 @@ class InputProcessor{
 	constructor(){
 	}
 	async Process(){
-        const processedInput = this.ReadFile();
+        const processedInput = this.ReadFile('./src/input/input.txt');
         const answers = [];
         PriceAssignment.Prices = processedInput.priceAssignments;
         CreditAssignment.Credits = processedInput.creditAssignments;
@@ -30,13 +30,13 @@ class InputProcessor{
         return answers;
 	}
 
-    ReadFile() {
+    ReadFile(filepath) {
         const result = {
             priceAssignments: [],
             creditAssignments: [],
             queries: []
         };
-        const lines = fs.readFileSync('./src/input/input.txt').toString().split('\n');
+        const lines = fs.readFileSync(filepath).toString().split('\n');
         for (let line of lines) {            
             line = line.replace(/(\n|\r)+$/, '');
             if(priceAssignmentRegex.test(line)){
