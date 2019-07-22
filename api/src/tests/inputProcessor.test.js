@@ -36,7 +36,6 @@ describe('Input Processor Tests', () => {
         const inputProcecssor = new InputProcecssor();
         inputProcecssor.ReadFile = jest.fn(()=> mockedFileData);
         const response = await inputProcecssor.Process();
-        console.log(response);
         expect(response).not.toBeNull();
         const expectedResponse = [[],[], 'I have no idea what you are talking about'];
         expect(response).toEqual(expectedResponse);
@@ -55,7 +54,6 @@ describe('Input Processor Tests', () => {
         };
         const inputProcecssor = new InputProcecssor();
         const response = await inputProcecssor.ReadFile('./src/tests/testInput.txt');
-        console.log(response);
         expect(response).not.toBeNull();
         expect(response).toEqual(expectedData);
 	});

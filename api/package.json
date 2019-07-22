@@ -7,7 +7,7 @@
     "build": "babel src -s -D -d dist",
     "test": "jest --verbose",
     "test:ci": "yarn test --env=jsdom --testResultsProcessor=\"jest-junit\" --coverage",
-    "start": "yarn test && node src",
+    "start": "yarn test && babel-node src",
     "watch": "yarn test && nodemon --exec babel-node ./src/index.js 8080",
     "test-watch": "nodemon --exec yarn test",
     "debug": "babel-node --inspect=0.0.0.0:9229 ./src/index.js"
